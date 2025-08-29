@@ -1,0 +1,165 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.redditviewer'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.redditviewer"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+        // local.propertiesからAPIキーを読み込み
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+
+        buildConfigField "String", "REDDIT_CLIENT_ID", "\"${properties.getProperty('REDDIT_CLIENT_ID', '')}\""
+        buildConfigField "String", "REDDIT_CLIENT_SECRET", "\"${properties.getProperty('REDDIT_CLIENT_SECRET', '')}\""
+        buildConfigField "String", "REDDIT_REDIRECT_URI", "\"${properties.getProperty('REDDIT_REDIRECT_URI', 'redditviewer://auth')}\""
+        buildConfigField "String", "TRANSLATION_API_KEY", "\"${properties.getProperty('TRANSLATION_API_KEY', '')}\""
+        buildConfigField "String", "TRANSLATION_API_URL", "\"${properties.getProperty('TRANSLATION_API_URL', '')}\""
+        buildConfigField "String", "BACKEND_API_URL", "\"${properties.getProperty('BACKEND_API_URL', 'https://your-cloud-run-url')}\""
+    }
+
+    signingConfigs {
+        release {
+            // リリース用の署名設定
+            // 実際の署名には別途キーストアファイルが必要です
+            // storeFile file('your-release-key.keystore')
+            // storePassword 'your-store-password'
+            // keyAlias 'your-key-alias'
+            // keyPassword 'your-key-password'
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.release
+            
+            // リリースビルドでもデバッグ情報を保持（クラッシュレポート用）
+            debuggable false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        compose true
+        buildConfig true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.8'
+    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    
+    // Compose BOM
+    implementation platform('androidx.compose:compose-bom:2024.02.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    
+    // Navigation
+    implementation 'androidx.navigation:navigation-compose:2.7.6'
+    
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0'
+    
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.1.0'
+    
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+    
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    
+    // DataStore
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    
+    // Image loading
+    implementation 'io.coil-kt:coil-compose:2.5.0'
+    implementation 'io.coil-kt:coil-gif:2.5.0'
+    implementation 'io.coil-kt:coil-video:2.5.0'
+    
+    // WebView
+    implementation 'androidx.webkit:webkit:1.9.0'
+    
+    // Custom Chrome Tabs (OAuth用)
+    implementation 'androidx.browser:browser:1.7.0'
+    
+    // Firebase (プッシュ通知)
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    
+    // Work Manager (バックグラウンドタスク)
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'androidx.hilt:hilt-work:1.1.0'
+    
+    // Permissions
+    implementation 'com.google.accompanist:accompanist-permissions:0.32.0'
+    
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2024.02.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+} 

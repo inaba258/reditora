@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reddit翻訳ビューワー</string>
+    
+    <!-- Authentication -->
+    <string name="login_title">Redditにログイン</string>
+    <string name="login_description">Redditアカウントでログインして投稿を閲覧しましょう</string>
+    <string name="login_button">Redditでログイン</string>
+    <string name="logout">ログアウト</string>
+    <string name="authentication_failed">認証に失敗しました</string>
+    <string name="authentication_success">ログインに成功しました</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">ホーム</string>
+    <string name="nav_subreddit">サブレディット</string>
+    <string name="nav_profile">プロフィール</string>
+    
+    <!-- Posts -->
+    <string name="posts_loading">投稿を読み込み中...</string>
+    <string name="posts_error">投稿の読み込みに失敗しました</string>
+    <string name="posts_empty">投稿がありません</string>
+    <string name="post_comments">コメント</string>
+    <string name="post_upvotes">アップボート</string>
+    <string name="post_author">投稿者: %s</string>
+    <string name="post_subreddit">r/%s</string>
+    
+    <!-- Translation -->
+    <string name="translation_loading">翻訳中...</string>
+    <string name="translation_error">翻訳に失敗しました</string>
+    <string name="show_original">原文を表示</string>
+    <string name="show_translation">翻訳を表示</string>
+    
+    <!-- Comments -->
+    <string name="comments_loading">コメントを読み込み中...</string>
+    <string name="comments_error">コメントの読み込みに失敗しました</string>
+    <string name="comments_empty">コメントがありません</string>
+    <string name="comment_reply">返信</string>
+    <string name="comment_score">%d ポイント</string>
+    
+    <!-- Subreddit -->
+    <string name="subreddit_search">サブレディットを検索</string>
+    <string name="subreddit_search_hint">サブレディット名を入力...</string>
+    <string name="subreddit_members">%s メンバー</string>
+    <string name="subreddit_subscribe">購読</string>
+    <string name="subreddit_unsubscribe">購読解除</string>
+    
+    <!-- Profile -->
+    <string name="profile_karma">カルマ: %d</string>
+    <string name="profile_created">作成日: %s</string>
+    <string name="profile_follow">フォロー</string>
+    <string name="profile_unfollow">フォロー解除</string>
+    
+    <!-- General -->
+    <string name="retry">再試行</string>
+    <string name="loading">読み込み中...</string>
+    <string name="error_network">ネットワークエラーが発生しました</string>
+    <string name="error_unknown">予期しないエラーが発生しました</string>
+    <string name="refresh">更新</string>
+</resources> 
