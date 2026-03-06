@@ -51,3 +51,8 @@ Redditを利用する上での不満を解消するため。
 | DB | Google Cloud Firestore |
 
 ## スクリーンショット
+一部プライバシー確保のため加工しています。
+![画像1](img/1.png)
+![画像2](img/2.png)
+![画像3](img/3.png)
+![画像4](img/4.png)
