@@ -79,10 +79,9 @@ app.get('/health', (req, res) => {
   });
 });
 
-// ルートエンドポイント
 app.get('/', (req, res) => {
   res.json({
-    message: 'Reddit翻訳ビューワー API Server',
+    message: 'Reditora API Server',
     version: '1.0.0',
     endpoints: {
       auth: '/api/auth',
@@ -115,9 +114,9 @@ app.use('*', (req, res) => {
 // サーバー起動
 app.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
-  console.log(`🚀 Reddit翻訳ビューワー API Server が起動しました`);
-  console.log(`📡 Port: ${PORT}`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`サーバー起動`);
+  console.log(`Port: ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 module.exports = app; 
