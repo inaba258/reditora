@@ -41,14 +41,13 @@ Redditを利用する上での不満を解消するため。
 | 
 | カテゴリ | 使用技術 
 |---|---|
-| モバイル（Android） | Kotlin, Jetpack Compose |
+| 主要コード、UI | Kotlin, Jetpack Compose |
 | 認証 | OAuth2, JWT, DataStore |
 | 通信 | Retrofit2 |
 | DI | Hilt |
-| バックエンド | Node.js / Express |
+| バックエンド | Node.js |
 | 外部API | Reddit API / Google TranslateAPI |
 | APIキー管理 | Google Cloud SecretManager |
-| DB | Google Cloud Firestore |
 
 ## スクリーンショット
 一部プライバシー確保のため加工しています。
