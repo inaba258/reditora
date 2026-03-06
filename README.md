@@ -16,24 +16,26 @@ Redditを利用する上での不満を解消するため。
 海外サッカーや物理学の情報収集に使っていたが、物理系のスレッドは専門用語が多く、英語のまま読むのに時間がかかることがありました。
 また、Reddit公式の翻訳機能は一部の投稿にしか対応していないこともあり、不便を感じていたため制作しました。
 
-
-## AI（Cursor + Claude Sonnet 3.5）の活用
+このアプリは開発においてCursor(Claude Sonnet 3.5)を利用しました。
 
 ### 任せた部分
 - Express のルーティング・ミドルウェアの雛形
 - helmet / cors などセキュリティ設定
 - エラーハンドリングの定型処理
+など
 
 ### 自分で直した部分
-- クリーンアーキテクチャ（data / domain / presentation）の設計：Qiitaで調べて自分で構成を決めた
-- DI モジュール（AppModule / NetworkModule / RepositoryModule）の責務分離
+- クリーンアーキテクチャ（data / domain / presentation）
+- DI モジュール（AppModule / NetworkModule / RepositoryModule）の分離
 - KotlinクライアントとNode.jsサーバー間の501エラーのデバッグ・修正
 - 投稿カード・リストのレイアウトとアイコンのUI調整（AI生成のデザインが使いにくかったため）
+など
+
 
 ## 技術構成
 
 | 
-| カテゴリ | 使用技術 |
+| カテゴリ | 使用技術 
 |---|---|
 | モバイル（Android） | Kotlin, Jetpack Compose |
 | 認証 | OAuth2, JWT, DataStore |
