@@ -26,11 +26,16 @@ Redditを利用する上での不満を解消するため。
 
 ### 自分で直した部分
 - クリーンアーキテクチャ（data / domain / presentation）
-- DI モジュール（AppModule / NetworkModule / RepositoryModule）の分離
-- KotlinクライアントとNode.jsサーバー間の501エラーのデバッグ・修正
+- AppModule / NetworkModule / RepositoryModuleの分離
+- KotlinクライアントとNode.jsサーバー間の503エラー等の修正
 - 投稿カード・リストのレイアウトとアイコンのUI調整（AI生成のデザインが使いにくかったため）
 など
 
+## 結論、反省
+・デザイン等は割と自分で実装する必要があると感じた。
+・Firebase等の実装時、かなりエラーが多発した。その辺は公式リファレンスを読み、確実に実装することの重要性を学んだ。。
+・一日数時間の利用×1週間でも、1000円程度TranslateAPIの料金がかかってしまった。
+・
 
 ## 技術構成
 
